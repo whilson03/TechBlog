@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using static TechBlog.Models.Enum;
 
 namespace TechBlog.Models
 {
@@ -29,5 +30,7 @@ namespace TechBlog.Models
         public int Likes { get; set; }
 
         public int Dislikes { get; set; }
+
+        public Category Category { get; set; }
     }
 }
