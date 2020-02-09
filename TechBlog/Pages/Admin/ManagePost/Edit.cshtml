@@ -1,0 +1,75 @@
+﻿@page
+@model TechBlog.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Post</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Post.Id" />
+            <div class="form-group">
+                <label asp-for="Post.Title" class="control-label"></label>
+                <input asp-for="Post.Title" class="form-control" />
+                <span asp-validation-for="Post.Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Post.Description" class="control-label"></label>
+                <input asp-for="Post.Description" class="form-control" />
+                <span asp-validation-for="Post.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Post.Content" class="control-label"></label>
+                <input asp-for="Post.Content" class="form-control" />
+                <span asp-validation-for="Post.Content" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Post.DatePosted" class="control-label"></label>
+                <input asp-for="Post.DatePosted" class="form-control" />
+                <span asp-validation-for="Post.DatePosted" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Post.DateLastUpdated" class="control-label"></label>
+                <input asp-for="Post.DateLastUpdated" class="form-control" />
+                <span asp-validation-for="Post.DateLastUpdated" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Post.ViewsCount" class="control-label"></label>
+                <input asp-for="Post.ViewsCount" class="form-control" />
+                <span asp-validation-for="Post.ViewsCount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Post.BannerImageLink" class="control-label"></label>
+                <input asp-for="Post.BannerImageLink" class="form-control" />
+                <span asp-validation-for="Post.BannerImageLink" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Post.Likes" class="control-label"></label>
+                <input asp-for="Post.Likes" class="form-control" />
+                <span asp-validation-for="Post.Likes" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Post.Dislikes" class="control-label"></label>
+                <input asp-for="Post.Dislikes" class="form-control" />
+                <span asp-validation-for="Post.Dislikes" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

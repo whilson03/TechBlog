@@ -1,0 +1,76 @@
+﻿@page
+@model TechBlog.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Post</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Post.Title)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Post.Title)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Post.Description)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Post.Description)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Post.Content)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Post.Content)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Post.DatePosted)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Post.DatePosted)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Post.DateLastUpdated)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Post.DateLastUpdated)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Post.ViewsCount)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Post.ViewsCount)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Post.BannerImageLink)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Post.BannerImageLink)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Post.Likes)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Post.Likes)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Post.Dislikes)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Post.Dislikes)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="Post.Id" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-page="./Index">Back to List</a>
+    </form>
+</div>
