@@ -5,105 +5,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - TechBlog</title>
 
-    @*<environment include="Development">
-            <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-        </environment>
-        <environment exclude="Development">
-            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-                  asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
-                  asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute"
-                  crossorigin="anonymous"
-                  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"/>
-        </environment>*@
-
-
-   <!-- new -->
-        <!-- Basic -->
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
-        <!-- Mobile Metas -->
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-        <!-- Site Metas -->
-        <title>Markedia - Marketing Blog Template</title>
-        <meta name="keywords" content="">
-        <meta name="description" content="">
-        <meta name="author" content="">
-
-        <!-- Site Icons -->
-        <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
-        <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
-
-        <!-- Design fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,700" rel="stylesheet">
-
-        <!-- Bootstrap core CSS -->
-        <link href="~/css/bootstrap.css" rel="stylesheet">
-
-        <!-- FontAwesome Icons core CSS -->
-        <link href="~/css/font-awesome.min.css" rel="stylesheet">
-
-        <!-- Custom styles for this template -->
-        <link href="~/style.css" rel="stylesheet">
-
-        <!-- Animate styles for this template -->
-        <link href="~/css/animate.css" rel="stylesheet">
-
-        <!-- Responsive styles for this template -->
-        <link href="~/css/responsive.css" rel="stylesheet">
-
-        <!-- Colors for this template -->
-        <link href="~/css/colors.css" rel="stylesheet">
-
-        <!-- Version Marketing CSS for this template -->
-        <link href="~/css/version/marketing.css" rel="stylesheet">
-
-        <!--[if lt IE 9]>
-          <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-          <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-        <![endif]-->
+    <environment include="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute"
+              crossorigin="anonymous"
+              integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" />
+    </environment>
 
 
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-page="/Index">WilsonTech</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                    <partial name="_LoginPartial" />
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-page="/Admin/ManagePost/Index">Post</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
 
-    <div id="wrapper">
-        <header class="market-header header">
-            <div class="container-fluid">
-                <nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
-                    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <a class="navbar-brand" href="marketing-index.html"><img src="images/version/market-logo.png" alt=""></a>
-                    <div class="collapse navbar-collapse" id="navbarCollapse">
-                        <ul class="navbar-nav mr-auto">
-                            <li class="nav-item">
-                                <a class="nav-link" href="marketing-index.html">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="marketing-category.html">Portfolio</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="marketing-category.html">About</a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link" href="marketing-contact.html">Contact Us</a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link" asp-page="/Admin/ManagePost/Index">Post</a>
-                            </li>
-                        </ul>
-                    </div>
-                </nav>
-            </div><!-- end container-fluid -->
-        </header><!-- end market-header -->
-
-
-    </div>
     <div class="container">
         <partial name="_CookieConsentPartial" />
         <main role="main" class="pb-3">
@@ -138,14 +80,7 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
 
     @RenderSection("Scripts", required: false)
+   
 
-
-    <!-- Core JavaScript
-    ================================================== -->
-    <script src="~/js/jquery.min.js"></script>
-    <script src="~/js/tether.min.js"></script>
-    <script src="~/js/bootstrap.min.js"></script>
-    <script src="~/js/animate.js"></script>
-    <script src="~/js/custom.js"></script>
 </body>
 </html>
