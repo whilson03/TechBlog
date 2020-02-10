@@ -14,7 +14,6 @@
 
     @foreach (var item in Model.Post)
     {
-
         <div class="col-md-6">
             <div class="card">
                 <div class="card-header">
@@ -25,7 +24,6 @@
                     <p class="card-text">
                         @{
                             var desc = item.Description;
-
                         }
                         @desc.Substring(0, 5) ...
                     </p>

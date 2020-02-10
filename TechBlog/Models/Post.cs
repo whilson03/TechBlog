@@ -21,16 +21,18 @@ namespace TechBlog.Models
 
         public DateTime DatePosted { get; set; } = DateTime.Now;
 
-        public DateTime DateLastUpdated { get; set; }
-        
-        public int ViewsCount { get; set; }
+        public DateTime DateLastUpdated { get; set; } =  DateTime.Now;
+
+        public int ViewsCount { get; set; } = 0;
 
         public string BannerImageLink { get; set; }
 
-        public int Likes { get; set; }
+        public int Likes { get; set; } = 0;
 
-        public int Dislikes { get; set; }
+        public int Dislikes { get; set; } = 0;
 
         public Category Category { get; set; }
+
+        public string author { get; set; }
     }
 }
