@@ -10,31 +10,35 @@
 <p>
     <a asp-page="Create">Create New</a>
 </p>
-
 <div class="row">
 
     @foreach (var item in Model.Post)
     {
-        <div class="row">
-            <div class="col-md-10">
-                <div class="card">
-                    <div class="card-header">
-                        POST ID : @item.Id
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">@item.Title</h5>
-                        <p class="card-text">
-                            @{
-                                var desc = item.Description;
 
-                            }
-                            @desc.Substring(0, 5) ...
-                        </p>
-                        <a asp-route-id="@item.Id" asp-page="./Details" class="btn btn-primary">Read More</a>
-                    </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    POST ID : @item.Id
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">@item.Title</h5>
+                    <p class="card-text">
+                        @{
+                            var desc = item.Description;
+
+                        }
+                        @desc.Substring(0, 5) ...
+                    </p>
+                    <a asp-route-id="@item.Id" asp-page="./Details" class="btn btn-primary">Details</a>
+                    <a asp-route-id="@item.Id" asp-page="./Delete" class="btn btn-outline-primary">Delete</a>
                 </div>
             </div>
         </div>
+    
     }
 
-</div>
+    </div>
+
+   
+
+
