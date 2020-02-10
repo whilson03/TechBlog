@@ -7,67 +7,29 @@
 
 <h1>Details</h1>
 
-<div>
-    <h4>Post</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Post.Title)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Post.Title)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Post.Description)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Post.Description)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Post.Content)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Post.Content)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Post.DatePosted)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Post.DatePosted)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Post.DateLastUpdated)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Post.DateLastUpdated)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Post.ViewsCount)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Post.ViewsCount)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Post.BannerImageLink)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Post.BannerImageLink)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Post.Likes)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Post.Likes)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Post.Dislikes)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Post.Dislikes)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-page="./Edit" asp-route-id="@Model.Post.Id">Edit</a> |
-    <a asp-page="./Index">Back to List</a>
-</div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    >@Model.Post.Title
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title text-black-50">@Model.Post.Description</h5>
+                    <div class="card-text">
+                        @Html.Raw(Model.Post.Content)
+                    </div>
+                    <a asp-page="./Edit" asp-route-id="@Model.Post.Id" class="btn btn-outline-primary">Edit</a>
+                    <a class="btn btn-outline-primary" asp-page="./Index">Back to List</a>
+
+                </div>
+                <div class="card-footer text-muted">
+                    Date Posted : @Model.Post.DatePosted  <span>  Date Last Updated : @Model.Post.DateLastUpdated</span>
+                </div>
+            </div>
+        </div>
+   
+
+    </div>
+
+

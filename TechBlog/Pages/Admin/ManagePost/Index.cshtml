@@ -5,80 +5,36 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Posts</h1>
 
 <p>
     <a asp-page="Create">Create New</a>
 </p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Post[0].Title)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Post[0].Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Post[0].Content)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Post[0].DatePosted)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Post[0].DateLastUpdated)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Post[0].ViewsCount)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Post[0].BannerImageLink)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Post[0].Likes)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Post[0].Dislikes)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model.Post) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Content)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DatePosted)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DateLastUpdated)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ViewsCount)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BannerImageLink)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Likes)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Dislikes)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+
+<div class="row">
+
+    @foreach (var item in Model.Post)
+    {
+        <div class="row">
+            <div class="col-md-10">
+                <div class="card">
+                    <div class="card-header">
+                        POST ID : @item.Id
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">@item.Title</h5>
+                        <p class="card-text">
+                            @{
+                                var desc = item.Description;
+
+                            }
+                            @desc.Substring(0, 5) ...
+                        </p>
+                        <a asp-route-id="@item.Id" asp-page="./Details" class="btn btn-primary">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+</div>

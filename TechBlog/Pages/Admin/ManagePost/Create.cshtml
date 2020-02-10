@@ -9,8 +9,9 @@
 
 <h4>Post</h4>
 <hr />
+
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-12">
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
@@ -25,14 +26,10 @@
             </div>
             <div class="form-group">
                 <label asp-for="Post.Content" class="control-label"></label>
-                <input asp-for="Post.Content" class="form-control" />
+                <textarea asp-for="Post.Content" class="form-control" id="summernote"> </textarea>
                 <span asp-validation-for="Post.Content" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Post.DatePosted" class="control-label"></label>
-                <input asp-for="Post.DatePosted" class="form-control" />
-                <span asp-validation-for="Post.DatePosted" class="text-danger"></span>
-            </div>
+
             <div class="form-group">
                 <label asp-for="Post.DateLastUpdated" class="control-label"></label>
                 <input asp-for="Post.DateLastUpdated" class="form-control" />
@@ -71,4 +68,14 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.15/dist/summernote-bs4.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.15/dist/summernote-bs4.min.js"></script>
+    <script>
+        $('#summernote').summernote({
+            placeholder: 'Share your knowledge',
+            tabsize: 2,
+            height: 300
+        });
+    </script>
 }
