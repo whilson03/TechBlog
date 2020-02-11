@@ -27,9 +27,6 @@ namespace TechBlog.Models
 
         public string BannerImageLink { get; set; }
 
-        public int Likes { get; set; } = 0;
-
-        public int Dislikes { get; set; } = 0;
 
         public Category Category { get; set; }
 
