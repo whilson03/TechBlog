@@ -20,6 +20,8 @@ namespace TechBlog.Pages
 
         public PaginatedList<Post> Posts { get; set; }
 
+        public List<Post> RecentPost { get; set; }
+
         public IndexModel(TechBlog.Data.ApplicationDbContext context)
         {
             _context = context;
@@ -50,6 +52,8 @@ namespace TechBlog.Pages
             IQueryable<Post> postsIQ = from s in _context.BlogPosts
                                              select s;
 
+            RecentPost = await postsIQ.OrderByDescending(s => s.DatePosted).Take(3).ToListAsync();
+
             if (!String.IsNullOrEmpty(searchString))
             {
                 postsIQ = postsIQ.Where(s => s.Title.ToUpper().Contains(searchString.ToUpper())
@@ -73,10 +77,11 @@ namespace TechBlog.Pages
                     break;
             }
 
-            int pageSize = 1;
+            int pageSize = 3;
             Posts = await PaginatedList<Post>.CreateAsync(
                 postsIQ.AsNoTracking(), pageIndex ?? 1, pageSize);
 
+          
 
 
         }
