@@ -11,13 +11,13 @@
                     <div class="col-lg-8 col-md-12 align-self-center">
                         <h2>A Technology blog</h2>
                         <p class="lead"> Aenean ut hendrerit nibh. Duis non nibh id tortor consequat cursus at mattis felis. Praesent sed lectus et neque auctor dapibus in non velit. Donec faucibus odio semper risus rhoncus rutrum. Integer et ornare mauris.</p>
-                        
+
                     </div>
                 </div>
             </div>
         </section><!--end section-->
 
-       
+
 
         <div id="wrapper">
             <section class="section lb">
@@ -30,28 +30,28 @@
                                     @foreach (var post in Model.Posts)
                                     {
 
-                                    <div class="card mb-4">
-                                        <div class="row no-gutters">
-                                            <div class="col-md-4">
-                                                <img src="@post.BannerImageLink"  class="card-img" alt="...">
-                                            </div>
-                                            <div class="col-md-8">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">@post.Title</h5>
-                                                    <p class="card-text">@post.Description</p>
-                                                    <p class="card-text"><small class="text-muted">Last updated @post.DateLastUpdated</small></p>
-                                                    <a asp-route-id="@post.Id" asp-page="./Blog/ReadPost" class="btn btn-outline-primary">Read More &rarr;</a>
+                                        <div class="card mb-4">
+                                            <div class="row no-gutters">
+                                                <div class="col-md-4">
+                                                    <img src="@post.BannerImageLink" class="card-img" alt="...">
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title">@post.Title</h5>
+                                                        <p class="card-text">@post.Description</p>
+                                                        <p class="card-text"><small class="text-muted">Last updated @post.DateLastUpdated</small></p>
+                                                        <a asp-route-id="@post.Id" asp-page="./Blog/ReadPost" class="btn btn-outline-primary">Read More &rarr;</a>
+                                                    </div>
+                                                </div>
+
+                                                <div class="card-footer text-muted ">
+                                                    Posted : @post.DatePosted | Author : @post.author
+                                                    <a href="#">Wilson Olabode</a> |<i> Category : @post.Category.ToString().ToLower()</i>
                                                 </div>
                                             </div>
-                                            
-                                            <div class="card-footer text-muted ">
-                                               Posted : @post.DatePosted | Author : @post.author
-                                                <a href="#">Wilson Olabode</a> |<i> Category : @post.Category.ToString().ToLower()</i>
-                                            </div>
                                         </div>
-                                       </div>
 
-                                   }
+                                    }
                                 </div>
                             </div>
 
@@ -115,13 +115,13 @@
                                     <h5 class="widget-title">Recent Posts</h5>
                                     <div class="blog-list-widget">
                                         <div class="list-group">
-                                           
+
                                             @foreach (var recent in Model.RecentPost)
                                             {
 
-                                                <a  asp-route-id="@recent.Id" asp-page="./Blog/ReadPost"  class="list-group-item list-group-item-action flex-column align-items-start">
+                                                <a asp-route-id="@recent.Id" asp-page="./Blog/ReadPost" class="list-group-item list-group-item-action flex-column align-items-start">
                                                     <div class="w-100 justify-content-between">
-                   
+
 
                                                         <h5 class="mb-1">@recent.Title</h5>
 
@@ -143,7 +143,7 @@
                                     </div><!-- end banner -->
                                 </div><!-- end widget -->
 
-                                
+
                                 <div class="widget">
                                     <h5 class="widget-title">Popular Categories</h5>
                                     <div class="link-widget">
@@ -174,4 +174,68 @@
                 </div><!-- end container -->
             </section>
         </div>
+
+
+
+
+
+        <script>
+            // get all list of pos
+            function listBlogPost() {
+                var baseUrl = window.location.origin;
+                console.log(baseUrl);
+
+
+                $.ajax({
+                    url: baseUrl + '/api/Posts/',
+
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function (posts) {
+                        alert('success');
+                        iterBlogPost(posts);
+                    },
+                    error: function () {
+                        alert("Error retrieving list");
+                    }
+                });
+            }
+
+
+
+            $(document).ready(function () {
+                listBlogPost();
+            });
+
+
+
+            function addBlogsToCards(post) {
+                var html = '<div class="card mb-4">'
+                html += ' <div class="row no-gutters">';
+                html += '<div class="col-md-4">';
+                html += `<img src="${post.bannerImageLink}"  class="card-img" alt="...">`;
+                html += '</div>';
+                html += ' <div class="col-md-8">  <div class="card-body">';
+                html += `<h5 class="card-title">${post.title}</h5>`;
+                html += ` <p class="card-text">${post.description}</p>`;
+                html += `<p class="card-text"><small class="text-muted">Last updated: ${post.dateLastUpdated}</small></p>`;
+                html += `<a asp-route-id="${post.id}" asp-page="./Blog/ReadPost" class="btn btn-outline-primary">Read More &rarr;</a>`;
+                html += '</div>    </div>';
+                html += ' <div class="card-footer text-muted ">';
+                html += ` Posted : ${post.datePosted} | Author :<a href="#"> ${post.author}</a> `;
+                html += `Category : ${post.category}</i>`;
+                html += '   </div> </div> </div>';
+
+                $('#post-container').append(html);
+
+            }
+
+            function iterBlogPost(posts) {
+                $.each(posts, function (index, post) {
+                    addBlogsToCards(post);
+                });
+            }
+
+
+        </script>
     </body>
