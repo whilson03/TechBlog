@@ -52,7 +52,7 @@ namespace TechBlog.Pages
             IQueryable<Post> postsIQ = from s in _context.BlogPosts
                                              select s;
 
-            RecentPost = await postsIQ.OrderByDescending(s => s.DatePosted).Take(3).ToListAsync();
+           
 
             if (!String.IsNullOrEmpty(searchString))
             {

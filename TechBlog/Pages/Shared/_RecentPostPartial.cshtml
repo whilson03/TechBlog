@@ -1,0 +1,36 @@
+﻿@using TechBlog.Data
+
+
+@inject ApplicationDbContext dbContext
+
+@{ 
+        var RecentPost =  dbContext.BlogPosts.OrderByDescending(p => p.DatePosted).Take(3).ToList();
+    
+  
+}
+
+<div class="widget">
+    <h5 class="widget-title">Recent Posts</h5>
+    <div class="blog-list-widget">
+        <div class="list-group">
+            
+            @foreach (var recent in RecentPost) 
+            {
+                
+                <div class="list-group-item list-group-item-action flex-column align-items-start">
+                    
+                        <div  class="w-100 justify-content-between">
+                            <a asp-route-id="@recent.Id" asp-page="/Blog/ReadPost">
+
+                                <h5 class="mb-1">@recent.Title</h5>
+                            </a>
+                            <small>@recent.DatePosted</small>
+                        </div>
+                    
+                  
+                </div>
+
+            }
+        </div>
+    </div><!-- end blog-list -->
+</div><!-- end widget -->
