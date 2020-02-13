@@ -1,4 +1,4 @@
-﻿@page
+﻿@page "{id}"
 @model TechBlog.ReadPostModel
 @{
     ViewData["Title"] = "ReadPost";
@@ -8,7 +8,9 @@
     var m = Model.Post;
 }
 
+
     <body>
+        <br/>
         <div id="wrapper">
             <section class="section lb">
                 <div class="container">
@@ -49,32 +51,9 @@
                         <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
                             <div class="sidebar">
 
-                                <div class="widget">
-                                    <h5 class="widget-title">Popular Categories</h5>
-                                    <div class="link-widget">
-
-                                        <ul class="list-group">
-                                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                                <a href="#">Android Programming</a>
-                                                <span class="badge badge-primary badge-pill">14</span>
-                                            </li>
-                                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                                <a href="#">IOS Programming</a>
-                                                <span class="badge badge-primary badge-pill">14</span>
-                                            </li>
-                                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                                <a href="#">Python Programming</a>
-                                                <span class="badge badge-primary badge-pill">14</span>
-                                            </li>
-                                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                                <a href="#">C# Programming</a>
-                                                <span class="badge badge-primary badge-pill">14</span>
-                                            </li>
-                                        </ul>
-                                    </div><!-- end link-widget -->
-                                </div><!-- end widget -->
-
-
+                                <partial name="_CategoriesPartial" />
+                                <br />
+                                <partial name="_RecentPostPartial" />
                             </div><!-- end sidebar -->
                         </div><!-- end col -->
                     </div><!-- end row -->
@@ -90,7 +69,7 @@
             //*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
 
             var disqus_config = function () {
-            this.page.url = 'https://localhost:44394/Blog/ReadPost/?id=' + @m.Id;  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.url = window.location.origin + '/Blog/ReadPost/?id=' + @m.Id;  // Replace PAGE_URL with your page's canonical URL variable
             this.page.identifier = @m.Id; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
             };
 
