@@ -6,23 +6,13 @@
 }
 
     <body>
-        <section id="cta" class="section">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-8 col-md-12 align-self-center">
-                        <h2>A Technology blog</h2>
-                        <p class="lead"> Aenean ut hendrerit nibh. Duis non nibh id tortor consequat cursus at mattis felis. Praesent sed lectus et neque auctor dapibus in non velit. Donec faucibus odio semper risus rhoncus rutrum. Integer et ornare mauris.</p>
 
-                    </div>
-                </div>
-            </div>
-        </section><!--end section-->
-
-
-
+       <br />
+       
         <div id="wrapper">
             <section class="section lb">
                 <div class="container">
+                   
                     <div class="row">
                         <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
                             <div class="page-wrapper">
@@ -30,27 +20,28 @@
 
                                     @foreach (var post in Model.Posts)
                                     {
-
-                                        <div class="card mb-4">
-                                            <div class="row no-gutters">
-                                                <div class="col-md-4">
-                                                    <img src="@post.BannerImageLink" class="card-img" alt="...">
-                                                </div>
-                                                <div class="col-md-8">
-                                                    <div class="card-body">
-                                                        <h5 class="card-title">@post.Title</h5>
-                                                        <p class="card-text">@post.Description</p>
-                                                        <p class="card-text"><small class="text-muted">Last updated @post.DateLastUpdated</small></p>
-                                                        <a asp-route-id="@post.Id" asp-page="./Blog/ReadPost" class="btn btn-outline-primary">Read More &rarr;</a>
-                                                    </div>
-                                                </div>
-
-                                                <div class="card-footer text-muted ">
-                                                    Posted : @post.DatePosted | Author : @post.author
-                                                    <a href="#">Wilson Olabode</a> |<i> Category : @post.Category.ToString().ToLower()</i>
+                                        
+                                    <div class="card mb-4" style="margin-top:20px">
+                                        <div class="row no-gutters">
+                                            <div class="col-md-4">
+                                                <img src="@post.BannerImageLink" class="card-img" alt="...">
+                                            </div>
+                                            <div class="col-md-8">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">@post.Title</h5>
+                                                    <p class="card-text">@post.Description</p>
+                                                    <p class="card-text"><small class="text-muted">Last updated @post.DateLastUpdated</small></p>
+                                                    <a asp-route-id="@post.Id" asp-page="./Blog/ReadPost" class="btn btn-outline-primary">Read More &rarr;</a>
                                                 </div>
                                             </div>
                                         </div>
+
+
+                                        <div class="card-footer text-muted ">
+                                            Posted : @post.DatePosted | Author : @post.author
+                                            |<i> Category : @post.Category.ToString().ToLower()</i>
+                                        </div>
+                                    </div>
 
                                     }
                                 </div>
@@ -112,7 +103,7 @@
                                 </div>
 
 
-                                <partial name="_RecentPostPartial"/>
+                                <partial name="_RecentPostPartial" />
 
                                 <div id="" class="widget">
                                     <h5 class="widget-title">Advertising</h5>
@@ -122,7 +113,7 @@
                                         </div><!-- end banner-img -->
                                     </div><!-- end banner -->
                                 </div><!-- end widget -->
-                                
+
                                 <partial name="_CategoriesPartial" />
 
 
