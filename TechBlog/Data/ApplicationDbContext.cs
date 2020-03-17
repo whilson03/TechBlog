@@ -16,5 +16,7 @@ namespace TechBlog.Data
             : base(options)
         {
         }
+
+        public DbSet<TechBlog.Models.Category> Category { get; set; }
     }
 }
